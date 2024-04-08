@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hw1_app',
     'hw2_app',
+    'hw3_app',
 ]
 
 LOGGING = {
