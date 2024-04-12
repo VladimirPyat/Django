@@ -25,10 +25,16 @@ SECRET_KEY = 'django-insecure-fq^zgs)tg7emg6_qel3k&*b%xe(%ltzaz(5ni05tu5a$^6vuwi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    # 'username.pythonanywhere.com'
+]
 
 
 # Application definition
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,6 +46,11 @@ INSTALLED_APPS = [
     'hw1_app',
     'hw2_app',
     'hw3_app',
+    'debug_toolbar',
+]
+
+INTERNAL_IPS = [
+'127.0.0.1',
 ]
 
 LOGGING = {
@@ -71,6 +82,7 @@ LOGGING = {
 }
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,7 +146,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
@@ -147,6 +159,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

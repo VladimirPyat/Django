@@ -38,16 +38,9 @@ class Order(models.Model):
 
     def __str__(self):
         products_list = self.products.all()
-        result = []
-        for product in products_list:
-            product_info = {
-                'id': product.id,
-                'name': product.name,
-                'qty': product.qty
-            }
-            products_list.append(product_info)
+        product_str = ', '.join(f'{product.name} - {product.qty}' for product in products_list)
 
-        return result
+        return f'{self.pk} ({product_str})'
 
 
 
