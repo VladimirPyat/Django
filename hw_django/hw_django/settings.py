@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'hw1_app',
     'hw2_app',
     'hw3_app',
+    'hw4_app',
     'debug_toolbar',
 ]
 
