@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
@@ -13,6 +14,9 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             return redirect('show_orders')
+        else:
+            messages.error(request, 'Логин или пароль неверны')
+            return render(request, 'hw4_app/login.html', {'form': form})
     else:
         form = AuthenticationForm()
     return render(request, 'hw4_app/login.html', {'form': form})

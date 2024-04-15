@@ -16,6 +16,14 @@
     <input type="submit" value="Войти">
 </form>
 
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 <p><a href="register/">Зарегистрироваться</a></p>
 </body>
 </html>
