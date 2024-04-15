@@ -1,5 +1,6 @@
 from django import forms
 from django.core import validators
+from .models import Product
 
 
 class PhoneField(forms.CharField):
@@ -28,3 +29,14 @@ class ClientForm(forms.Form):
             raise forms.ValidationError("Пароли не совпадают. Попробуйте еще раз.")
 
         return cleaned_data
+
+class OrderForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(OrderForm, self).__init__(*args, **kwargs)
+
+        products = Product.objects.all()
+        for product in products:
+            self.fields['qty_%d' % product.id] = forms.IntegerField(label=f'{product.name}', min_value=0)
+            self.fields['qty_%d' % product.id].widget.attrs['placeholder'] = product.price
+            self.fields['product_id_%d' % product.id] = forms.IntegerField(widget=forms.HiddenInput(),
+                                                                           initial=product.id)

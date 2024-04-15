@@ -60,6 +60,7 @@ class Order(models.Model):
         else:
             self.products.add(product)
 
+
         self.total_price += product.price
         return
 

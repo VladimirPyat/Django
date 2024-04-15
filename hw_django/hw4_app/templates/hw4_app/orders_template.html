@@ -5,6 +5,14 @@
     <title>Title</title>
 </head>
 <body>
+<a href="{% url 'create_order' %}">Создать заказ</a>
+<a href="{% url 'delete_order' %}">Удалить заказ</a>
+<br>
+
+{% for message in messages %}
+<p> {{ message }} </p>
+{% endfor %}
+
     <h3>Заказы пользователя {{ user_name }} (id{{ user_id }})</h3>
 
 {% for order in orders %}
@@ -23,6 +31,7 @@
         {% endif %}
     {% endfor %}
 {% endfor %}
+
 
 
 </body>

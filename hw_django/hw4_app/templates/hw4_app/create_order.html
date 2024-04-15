@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form action="" method="post">
+      <h3> Введите количество нужного товара в заказе</h3>
+  {% csrf_token %}
+
+      {{ form }}
+
+  <input type="submit" value="Отправить">
+  </form>
+
+</body>
+</html>

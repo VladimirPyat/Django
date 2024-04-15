@@ -8,7 +8,7 @@ from faker import Faker
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        faker = Faker()
+        faker=Faker()
         products = [
             Product(name='headphones', price=5500),
             Product(name='notebook', price=55000),

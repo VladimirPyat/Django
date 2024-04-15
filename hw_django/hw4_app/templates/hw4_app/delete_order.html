@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <label for="order_id">Укажите номер заказа для удаления:</label>
+    <input type="number" name="order_id" required>
+    <input type="submit" value="Delete">
+</form>
+</body>
+</html>
