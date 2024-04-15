@@ -1,4 +1,5 @@
-
+from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.db import models
 
@@ -8,10 +9,26 @@ from django.utils import timezone
 
 class Client(models.Model):
     name = models.CharField(max_length=100, blank=False)
+    password = models.CharField(max_length=128, blank=False)
     email = models.EmailField()
     phone_number = models.CharField(max_length=10)
     address = models.CharField(max_length=200)
     register_date = models.DateTimeField(auto_now_add=True)
+
+    def set_password(self, password):
+        self.password = make_password(password)
+
+    def check_password(self, password):
+        return check_password(password, self.password)
+
+    def save(self, *args, **kwargs):
+        super(Client, self).save(*args, **kwargs)
+
+        user = User.objects.create_user(
+            username=self.email,
+            email=self.email,
+            password=self.password
+        )
 
 
 class Product(models.Model):
